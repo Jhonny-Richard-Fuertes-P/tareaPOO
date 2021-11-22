@@ -1,0 +1,72 @@
+aqui todos los comandos de git(20/11/21)  https://git-scm.com/docs/git#_git_commands
+
+git init                                   esto es para hacer que git comienze a hacer el seguimiento del proyecto ({dos areas: area de ensayo [staging area]y esta es temporal}; y el repositorio local) 
+
+git add "nombre de archivo"                esto es para añadir archivos al seguimiento (lo manda al area de ensayo) , con "nombre del archivo" para indiar cual es el archivo a añadir en especifico... 
+
+git add .                                  con el punto para que se les haga el seguimiento a todos los archivos del proyecto. (preparacion para guardar el proyecto)
+
+git commit                                 traslada el archivo o archivos que tenemos en el area de ensayo hasta el repositorio local y es alli donde se crea el respaldo de los archivos hasta el momento en el cual se guardan (se hace manulmente cada que tengamos cosas que queramos guardar como modificaciones o avances)
+
+git commit -m "nombre del checkpoit"       aqui haremos el guardado de los archivos y le daremos nombre al punto en el cual el proyecto se encuentra a la hora de guardarlo
+
+git status -s                              para ver el estado de los archivos (si los sigue o no y esas cosas XD); los interrogantes en rojo quieren decir que al archivo en cuestion no se le esta haciendo un seguimiento, una A en verde es que el archivo está en el stagin area, una m en rojo delante del nombre del archivo indica que hay cambios y no an sido respaldados por git 
+
+  instrucciones primer uso para el error y luego de hacer esto volver a provar el commit
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+luego de hacer el git commit -m "nombre del checkpoint" los archivos los cuales se encuentren en el staging area seran guardados en el repositorio local y al hacer el git status -s ya no aparecera en la lista 
+
+git log --oneline                          esto para mirar cuantas copias o cuantos checkpoints tengo hasta el momento (los commit que emos echo)(repositorio local)(los numeros de adelante son una descricion y sirven para poder restaurar luego el proyecto hasta ese punto 
+
+git reset --hard                           esto es para restaurar a un archivo anterior... ojo que solo con git (sin github) borraria si tenemos otra copia mas adelante de lo que restauremos y para restaurar utilizamos los numeros anteriores al nombre del checkpoint.
+
+git commit -am "nombre checkpoint"         esto es una combinacion para saltar el git add.. 2 en 1: add y commit.
+
+git commit --amend                         esto es para editar el nombre de los commit o el nombre del checkpoint... se abre nueva consoola escrives en la parte inferior del todo en la linea negra luego de la blanca ... escribimos :i para poder borrar el nombre del checkpoint, lo borramos luego escape y nuevamente :i para escribir el nuevo nombre ( aparecerá en la line de abajo luego de la linea blanca ) pulsamos enter y luego escape y ya aparece el nombre donde deberia en la primera linea y con un color distinto ... ya para guardar escribimos en la linea final despues de la blanca :wq  asi guardamos y salimos de esta ventana de editor y regresaremos al bash
+
+para hacer un repositorio en github: copiamos la linea {git remote add origin https://github.com/Jhonny-Richard-Fuertes-P/Jhonny-Richard-Fuertes-P.git} o como te aparesca y botará un error si es la primera vez ya que hay que inicar secion en github.. a lo que salte el error le dí enter y salío la ventana para iniciar secion en github
+
+git push -u origin main                    esto es para subir el estado del proyecto con todo y los commit o checkpoints que ayamos echo a github
+
+git pull                                   esto es para pasar lo que ayamos editado de nuestro proyecto en el navegador con github y pasarlo a nuestro pc 
+
+tags ---- las tags nos permitiran descargar el archibo desde github... asignamos tags cuando tenemos las verciones funcionales del proyecto V1 V2 V3 V4 etc y queremos que alguien mas pueda descargar el proyecto en el estado en el que esté en el momento de crear la tag/etiqueta.. tambien podemos volver a verciones anteriores desde las tags 
+
+git tag (nombre identificativo de la tag/etiqueta) -m "descripcion que le queramos dar" le damos enter pero aun no sucederá nada 
+
+git push --tags                            esto es para subir la o las tags a github (repositorio remoto)
+
+para clonar nuestro proyecto desde github podemos hacerlo de varias maneras ya sea descargando el zip (jajaj como vas a explicar esto ajjajja)////// en github ( en nuestro repositorio en github ) cuando visualizamos code bajo el nombre de nuestro repositorio encontramos los archivos o carpetas que tiene el proyecto... a la derecha de donde encontramos el main... branch... tag    podemos encontrar un boton que pone code acompañado de in indicador hacia abajo .... desde alli se pueden ver esas opciones de descarga... un link https://...... este lo utilizamos para obtener el proyecto desde la consola de gitbash .... el zip es descarga comun 
+
+git clone (link https://....)              esto lo usamos para clonar por consola el proyectop que tengamos en el link encontrado en lo anterior (link https//.....)
+
+
+las ramas o branch son como lineas de tiempo  en las cuales puedes hacer pruebas o aportes luego de un commit pero sin afectar al proyecto original a menos que fucionemos estas ramas la rama original o principal se llama master ( en mi caso fue así hasta que en cierto punto al usar github se cambió a main)
+
+git branch (nombre de la rama)             esto se usa para crear una rama desde la consola de gitbash 
+
+git branch                                 esto solo es para mirar las ramas que tenemos y con un simbolo (no se que es eso ajaj) mirar en cual rama estamos 
+
+las modificaciones que se le hagan al proyecto se efectuaran solo en la rama en la cual estemos. 
+
+git checkout (nombre de la rama)           esto es para movernos de rama a la que elijamos por medio del nombre que utilicemos.
+
+git merge                                  siempre desde la rama principal ya sea master o main ... esto se usa para combinar ramas ( si tienes problemas para realizar esto se puede deber a que ambas ramas modifican o tienen modificaciones en una misma linea o parte del codigo) ( la solucion depende del lenguaje que utilices ... visual studio code es maso facil)  
+ 
+git branch -d (nombre de la rama)          esto para borrar ramas ( se borra la rama cuyo nombre colocamos en "nombre de la rama"
+
+Cuando necesitamos regresar en el tiempo porque borramos alguna línea de código pero no queremos pasarnos a otra rama porque nos daría un error ya que debemos pasar ese “mal cambio” que hicimos a stage, podemos usar git stash para regresar el cambio anterior que hicimos.
+
+git stash                                  es típico cuando estamos cambios que no merecen una rama o no merecen un rebase si no simplemente estamos probando algo y luego quieres volver rápidamente a tu versión anterior la cual es la correcta. 
+
+El comando git stash coge los cambios sin confirmar (tanto los que están preparados como los que no), los guarda aparte para usarlos más adelante y, acto seguido, los deshace en el código en el que estás trabajando.
+
+git stash pop                              Al hacer pop del stash, se eliminan los cambios de este y se vuelven a aplicar en el código en el que estás trabajando.
+
+git stash apply                            Esto resulta útil si quieres aplicar los mismos cambios de un stash en varias ramas. 
+
+ hay una puntualización sobre el comando git stash de la que debes ser consciente: de forma predeterminada, Git no guardará en un stash los cambios efectuados en archivos sin seguimiento o ignorados.
+
+
